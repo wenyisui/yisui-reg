@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>正则</title>
+</head>
+<body>
+    <div></div>
+    <!-- 写模板的方法 -->
+    <script type="text/html" id="tpl">
+        <div></div>
+    </script>
+    <script type="text/javascript">
+        // 转义 -> 转换意义  改变意义
+        // 转义符号  转义字符
+        //  \          \字符
+        //             \" 转义字符
+        
+        // var str = "我是一名'牛逼'的程序员"
+        // var str = "我是一名\"牛逼\"的程序员";
+        // \n \r \t  系统级别的，在html中只能识别一个空格
+        // \t -> tab键   4个空格
+
+        // \n 换行
+        // 点击回车
+        // windows    \r\n
+        // mac        \r
+        // linux      \n
+        // var str = "我是一名\t牛逼的程序员";
+        // document.write(str);
+
+        
+
+        // javasccript是不允许字符串换行
+        // var str = '<h1>我是小温</h1>'+
+        //            '<h2>我想成为牛逼的</h2>'+
+        //            '<h3>程序员</h3>'
+        var str = '<h1>我是小温</h1>\
+                   <h2>我想成为牛逼的</h2>\
+                   <h3>程序员</h3>'
+        // \把换行转义成空格了
+        var wrap = document.getElementsByTagName('div')[0];
+
+        wrap.innerHTML = str;
+
+    </script>
+</body>
+</html>

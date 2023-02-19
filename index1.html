@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>了解正则</title>
+</head>
+<body>
+    <div></div>
+    <script type="text/html" id="tpl">
+        <div>{{name}}</div>
+    </script>
+    <script type="text/javascript">
+        // RegExp = regular expression
+        // 逻辑   公式
+        /**
+         * 1. 替换数据中的某些字符串
+         * 2. 替换模板
+         * */ 
+
+        //  var obj = new Object();
+        //  var arr = new Array();
+        //  var reg = new RegExp('Test', 'gim'); 
+        //  //第二个参数i   ignore case 忽略大小写
+        //  //         g   global  匹配全局
+        //      str = 'This is a test. \nTest is important';
+        
+        // 字符串片段 大小写默认敏感   连续
+        
+        // reg.test(str);
+
+
+
+        // 直接声明对象  对象字面量   对象直接量
+        // var obj = {};
+        // var arr = [];
+        // var v = 'Test';    // 如果正则表达式里面是变量的情况 只能用new RegExp() 实例化对象的方式
+        // // var reg = /Test/gim;    // m   multi-line  多行
+        // var reg = new RegExp(v, 'i')
+
+        // var str = 'This is a test. Test is important';
+
+
+
+        // 正则   对象
+
+        var reg = /test/;
+        var newReg = RegExp(reg);  // 只是拿了reg的引用   // 1
+        // var newReg = new RegExp(reg); // 重新new了一个对象  打印出来是undefind
+        
+        reg.a = 1;
+        console.log(newReg.a);   // 1
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>正则修饰符</title>
+</head>
+<body>
+    
+    <script type="text/javascript">
+        // 正则  修饰符
+        
+        // gim 修饰符  正则属性
+        // var reg = /Test/gim;  // i  ignore case  忽略大小写
+        //                       // g  global 全局匹配
+        //                       // m  multi-line 多行匹配
+        //     str = 'This is a test. Test is important';
+
+        
+        // 表达式[]
+
+        // var reg = /[wx][xy][z]/g,   // []的意思是中间选择一个，中间的一位
+        //     str = 'wxyz';
+
+        // console.log(str.match(reg)); //['xyz']
+
+
+
+        // var str = 'fegfegegwegeDDFNHEIOJOJO',
+        //     reg = /[0-9][A-Z][a-z]/g;
+
+        //    0-9A-Za-z    0-9A-z  0-z  0-Z
+        // [^a-z]  []内部写^是非的意思
+        // /123|234/g   | 是或的意思
+
+
+
+        // 元字符   正则使用的转义字符   一个元字符匹配一位
+       //1. // \w  === [0-9A-z_]
+        // \W  === [^\w]  // 大W和小w啊hi互补的关系
+
+        // var reg = /\wab/g,   //4ab
+        // var  reg = /[\w][\w][\w]/g,  // ['234', 'abc']
+        //    var  reg = /[\W][\W][\W]/g,  //['-%&']
+        //     str = '234abc-%&'
+
+        // console.log(str.match(reg));
+
+
+       
+        //2. // \d ===[0-9]
+             // \D ===[^\d]
+            
+            //  var reg = /\dab/g,
+            //      str = '234abc-%&'
+            //  console.log(str.match(reg))  //['4ab']
+
+        
+        //3. // \s ===[\r\n\t\v\f]
+             // \r 回车符  \n 换行符 \t 制表符  tab  \v 垂直换行符  \f 换页符
+             // \S ===[^\s]
+             // 
+             // \b 单词边界
+             // \B 非单词边界
+             // 
+             // . 可以匹配除了回车和换行的所有字符
+
+            //  var reg = /\sab/g,
+            //     //  str = '23 ab-$%'  // [' ab']
+            //     str = '23\nab-$%'   // ['\nab']
+            //  console.log(str.match(reg))   // [' ab']
+            // var reg = /\bThis\b/g,
+            //     str = 'This is a test'
+            // console.log(str.match(reg));  // ['This']
+
+            // .
+            var reg =/./g,
+                str = 'This\ris\na\ttest'
+            console.log(str.match(reg)); // ['T', 'h', 'i', 's', 'i', 's', 'a', '\t', 't', 'e', 's', 't']
+
+            // 一个元字符匹配一位
+    </script>
+</body>
+</html>
