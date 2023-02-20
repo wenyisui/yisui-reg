@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>正则贪婪和非贪婪模式</title>
+</head>
+<body>
+     <script type="text/javascript">
+        // 正向预查   我要匹配一个字符串，但是我是有条件的，我的字符串后面要有特定的字符或字符串，这种匹配方式叫正向预查的匹配方式
+        // var str = '1231231231',
+        //     reg = /1(?=2)/g
+        // console.log(str.match(reg));
+
+        // 贪婪模式和非贪婪模式
+        // 正则在任何语言中都是默认贪婪模式的
+        // var str = 'abcd{{efg}}abcd{{xyz}}';
+        //     // reg = /{{.*}}/g;  // ['{{efg}}abcd{{xyz}}']  贪婪模式 
+        //     reg = /{{.*?}}/g;  // ['{{efg}}', '{{xyz}}']  ?是将贪婪模式转换成非贪婪模式
+        // console.log(str.match(reg)); 
+        // 贪婪
+        // var str = 'aaaaaaa',
+        //     reg = /\w?/g
+        // console.log(str.match(reg)); // ['a', 'a', 'a', 'a', 'a', 'a', 'a', '']  能匹配多不匹配少
+        var str = 'aaaaaaa',
+            reg = /\w??/g
+        console.log(str.match(reg)); // ['', '', '', '', '', '', '', '']  改成了非贪婪模式能匹配少不匹配多
+     </script>
+</body>
+</html>

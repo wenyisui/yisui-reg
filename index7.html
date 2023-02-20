@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>replace处理数据字符串</title>
+</head>
+<body>
+    <script type="text/javascript">
+        // replace
+        // 注意：replace是不具备全局匹配的能力的 用正则的方式加g ， replace才能全局匹配
+        // var str = 'JSplusplus',
+        //     reg = /plus/g;   
+        // var str1 = str.replace(reg, '+');
+        // console.log(str1);
+
+        // xxyy -> yyxx
+        // 第一种方法用$去取
+        // var str = 'aabbccdd',
+        //     reg = /(\w)\1(\w)\2/g
+        // var str1 = str.replace(reg, '$2$2$1$1'); //bbaaddcc
+        // console.log(str1);
+        // 第二种方法
+        // var str = 'aabbccdd',
+        //     reg = /(\w)\1(\w)\2/g
+        // var str1 = str.replace(reg, function($, $1, $2){   // 第一个参数是当前匹配项 第二个参数是第一个子表达式 第三个参数是第二个子表达式 ...    
+        //     //  console.log($, $1, $2)    
+        //     return $2 + $2 + $1 + $1;          
+        // }); //bbaaddcc
+
+        // console.log(str1);
+
+
+        // js-plus-plus -> jsPlusPlus
+        // var str = 'js-plus-plus',
+        //     reg = /-(\w)/g;
+        // var str1 = str.replace(reg, function($,$1){
+        //     // console.log($,$1)
+        //     return $1.toUpperCase();
+        // })
+        // console.log(str1);
+
+       // jsPlusPlus -> js_Plus_plus;
+        //  var str = 'jsPlusPlus',
+        //      reg = /([A-Z])/g
+        //  var str1 = str.replace(reg, function($, $1){
+        //       return '_' + $1.toLowerCase()
+        //  })
+        //  console.log(str1);
+
+        // xxyyzz -> XxYyZz
+        // var str = 'xxyyzz',
+        //     reg = /(\w)\1(\w)\2(\w)\3/g
+        // var str1 = str.replace(reg, function($, $1, $2, $3){
+        //      console.log($, $1, $2, $3);
+        //      return $1.toUpperCase() + $1 + $2.toUpperCase() + $2 + $3.toUpperCase() + $3;
+        // })
+        // console.log(str1);
+
+        // aabbcc -> a$b$c$ -> 不能使用function
+        // 其他符号直接加 需要用$的话，需要在$之前再加个$
+        // var str = 'aabbcc',
+        //     reg = /(\w)\1(\w)\2(\w)\3/g
+        // var str1 = str.replace(reg, '$1$$$2$$$3$$')
+        // console.log(str1);
+
+        // var str = 'aa*bb*cc',
+        //     reg = /\*/g      // 语法里存在的匹配的话需要转义
+        // console.log(str.match(reg));
+
+        // var str = 'aabbcc',  // abc
+        //     reg = /(\w)\1(\w)\2(\w)\3/g
+        // var str1 = str.replace(reg, '$1$2$3');
+        // console.log(str1);
+        // var str = 'aaaaabbbbccccccccc',  // abc
+        //     reg = /(\w)\1*/g
+        // var str1 = str.replace(reg, '$1');
+        // console.log(str1);
+
+
+        // var str = '1000000000000'  // 100,000,000,000;
+        // //     reg = /(\d{3}\B)/g
+        // // var str1 = str.replace(reg, '$1,')
+        // // console.log(str1);
+        // // 正向预查
+        // var reg = /(?=(\B)(\d{3})+$)/g;
+        // var str1 = str.replace(reg, ',');
+        // console.log(str1)
+
+
+        
+
+    </script>  
+</body>
+</html>

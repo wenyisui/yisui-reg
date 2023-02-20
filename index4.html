@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>正则量词</title>
+</head>
+<body>
+    
+     <script type="text/javascript">
+        /**
+         * 正则匹配原则
+         * 1. 不回头
+         * 2. 贪婪模式
+        */
+
+        // n+  {1, 正无穷}
+        // var reg = /\w+/g,
+        //     str = 'abcdefg';
+        // console.log(str.match(reg));   // ['abcdefg']
+
+        // n*  {0, 正无穷}
+        // var reg = /\w*/g,
+        //     str = 'abcdefg';
+        // console.log(str.match(reg));   // ['abcdefg','']
+        // var reg = /\d*/g,
+        //     str = 'abcdefg';
+        // console.log(str.match(reg));   // ['', '', '', '', '', '', '', '']  匹配不上会匹配空
+        // 字符串从左到右，依次先匹配多，再匹配少，如果一旦匹配上就不回头匹配
+        // 贪婪匹配原则：能匹配多个，绝不匹配少个。
+
+        // n? {0, 1}
+        // var reg = /\w?/g,
+        //     str = 'abcdefg'
+        // console.log(str.match(reg)); // ['a', 'b', 'c', 'd', 'e', 'f', 'g', '']
+
+        // n(x, y)  {1,正无穷} ===n+    {0,正无穷}===n*  {0,1} ===n?
+        // var reg = /\w{1,2}/g,
+        //     str = 'abcdefg'
+        // console.log(str.match(reg));  // ['ab', 'cd', 'ef', 'g']
+
+        // ^n 匹配任意以n开头的字符串   m \n 多行匹配
+        // var reg = /^ab/gm,
+        //     str = 'abcdabcd\nabcdabcd'
+        // console.log(str.match(reg));  //['ab']
+
+        // n$ 匹配任何以n结尾的字符串
+        // var reg = /cd$/g,
+        //     str = 'abcdabcd'
+        // console.log(str.match(reg))  // ['cd']
+        // 问题：检查字符串是否以abcd开头和以abcd结尾
+        // var str = 'abcd123123abcd',
+        //     // reg = /^abcd[\s\S]*abcd$/g
+        //     reg = /^abcd.*abcd$/g
+        // console.log(str.match(reg))   // ['abcd123123abcd']
+
+        // 检查字符串是否以abcd开头和以abcd结尾，并且开头结尾之间是数字
+        // var str = 'abcd123123abcd',
+        //     reg = /^abcd\d+abcd$/g
+        // console.log(str.match(reg))  // ['abcd123123abcd']
+
+        // 匹配以138开头的11位手机号码
+        // var str = '13812345678';
+        //     // reg = /^138\d{8}/g
+        //     reg = /^138[\d]{8}/g
+        // console.log(str.match(reg));
+
+        // ?=n  匹配任何其后紧接着指定字符串n的字符串
+        // ?!n  比配任何不是其后紧跟着指定字符串n的字符串
+        // var str = 'abcdabcd',
+        //     // reg = /a(?=b)/g   //匹配后面紧跟着b的a
+        //     reg = /a(?!b)/g   //匹配后面不是紧跟着b的a
+        // console.log(str.match(reg));  // ['a', 'a']  匹配后面紧跟着b的a
+
+        // xxxx xxyy
+        // 子表达式()   反向引用\1   反向引用第几个子表达式\1：反向引用第1个子表达式 \2：反向引用第2个子表达式
+        // var str = 'bbaaaaccaaaaiddddbaaaa',
+        //     // reg = /(a)\1\1\1/g
+        //     reg = /(\w)\1(\w)\2/g   // ['bbaa', 'aacc', 'aaaa', 'dddd', 'aaaa']
+        // console.log(str.match(reg));
+
+        // reg.exec()  reg.lastIndex和exec()的index是吻合的
+        // var reg = /123/g,
+        //     str = '123123123123123'
+        // console.log(reg.exec(str))  //['123', index: 0, input: '123123123123123', groups: undefined]
+        // console.log(reg.exec(str))  //['123', index: 3, input: '123123123123123', groups: undefined]
+        // console.log(reg.exec(str))  //['123', index: 6, input: '123123123123123', groups: undefined]
+        // // 如果reg.lastIndex被修改成4, exec()会找下一个和4接近的相匹配。会找到6
+        var reg = /(\w)\1(\w)\2/g,
+            str = 'aabbccddddddccceevvv'
+        console.log(str.match(reg));  // ['aabb', 'ccdd', 'dddd', 'ccee']
+        console.log(reg.exec(str)) //['aabb', 'a', 'b', index: 0, input: 'aabbccddddddccceevvv', groups: undefined]
+        console.log(reg.exec(str)) //['ccdd', 'c', 'd', index: 4, input: 'aabbccddddddccceevvv', groups: undefined]
+        console.log(reg.exec(str)) //['dddd', 'd', 'd', index: 8, input: 'aabbccddddddccceevvv', groups: undefined]
+        console.log(reg.exec(str)) //['ccee', 'c', 'e', index: 13, input: 'aabbccddddddccceevvv', groups: undefined]
+        console.log(reg.exec(str)) // null
+
+        // 总结 用反向引用的这种表达式， exec()会把每一次引用所匹配到的的子表达打印出来
+                         
+     </script>
+</body>
+</html>
