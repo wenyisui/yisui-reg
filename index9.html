@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>正则案例</title></title>
+</head>
+<body>
+    <input type="text" id="test" onkeyup="test(this)" />
+    <button>点击</button>
+    <script type="text/javascript">
+       var oTest = document.getElementById('test');
+
+       // 0-9A-z_ => \w  希腊字母  俄文字母 ......
+
+       function test (obj) {    
+        //  var reg = /\s/;  // 用户体验上不能输入空格
+        // var reg = /\D/;    // 每次输入非数字的时候清空
+        // var reg = /[^A-z0-9_]+/;  // \W 0-9a-Z
+         
+         obj.value = obj.value.replace(reg, ''); // 用户体验上不能输入空格   提交的时候在校验一次   传给后端后，后端还得再校验一次
+       }
+       // 这个功能写不写，在提交的时候，都需要进行验证。
+
+    </script>
+</body>
+</html>

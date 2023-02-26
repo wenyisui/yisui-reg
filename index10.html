@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>正则身份证</title>
+    </title>
+    </title>
+</head>
+
+<body>
+    <input type="text" id="test" />
+    <!-- <button onclick="test()">点击</button> -->
+    <!-- <input type="file" id="file" onchange="test2(this)" /> -->
+    <button onclick="test3()">点击</button>
+    <script type="text/javascript">
+        var oTest = document.getElementById('test');
+
+        // 身份证正则
+        // function test () {
+        //     var val = oTest.value,
+        //         reg = /^[1-9]\d{5}(18|19|20)\d{2}((0[1-9])|(1[0-2]))(([0-2][1-9])|10|20|30|31)\d{3}[1-9Xx]$/,
+        //         pass = reg.test(val);
+
+        //     console.log(pass);
+        // }
+
+
+
+
+        // 密码至少6位，包含1个大写 1个小写 1个数字 1个特殊
+        // ?= 正向预查  正向断言
+        // function test () {
+        //     var val = oTest.value,
+        //         reg = /^.*(?=.{6,})(?=.*\d)(?=.*[A-Z])(?=.*[a-z])(?=.*[~!@#$%^&*?]).*$/;
+        //         pass = reg.test(val);
+
+        //     console.log(pass);
+        // }
+
+
+        // 上传图片
+        // function test2 (obj) {
+        //     var val = obj.value,
+        //         reg = /(\.jpg|\.gif|\.png|\.jpeg)/,
+        //         pass = reg.test(val);
+
+        //     console.log(pass);
+        // }
+
+
+
+        // 用户名校验
+        // function test3 () {
+        //    var val = oTest.value,
+        //        reg = /[0-9A-z_-]{4,16}/;
+        //        pass = reg.test(val);
+
+        //     console.log(pass);
+        // }
+
+
+        // 正整数
+        // function test3 () {
+        //     var val = oTest.value,
+        //         reg = /^\d+$/,
+        //         pass = reg.test(val);
+
+        //     console.log(pass);
+        // }
+
+
+        // 
+
+
+        // 负整数
+
+        // function test3 () {
+        //     var val = oTest.value,
+        //     reg = /^-\d+$/,
+        //     pass = reg.test(val);
+
+        //   console.log(pass);
+        // }
+
+
+        // 正负整数
+        // function test3 () {
+        //     var val = oTest.value,
+        //     reg = /^-?\d+$/,
+        //     pass = reg.test(val);
+
+        //   console.log(pass);
+        // }
+
+
+        // 邮箱   xxxxx@xx.com.cn
+        // function test3 () {
+        //     var val = oTest.value,
+        //         reg = /^([A-z0-9_-])+\@([A-z0-9_\-\.])+\.([A-z]{2,4})/,
+        //         pass = reg.test(val);
+
+        //         console.log(pass);
+        // } 
+
+
+        // 正向预查
+        // 用子表达式()起来的东西，它不仅能匹配两个合到一起的字符，还能匹配每个子表达式里面的字符  
+        // 这种在正则中叫捕获分组
+        // a(?=b) //a后面直接跟b   a(?!b) //a后面不跟b
+        // ?: 目的是不让他捕获该子表达式
+        // var str = 'abcabc',
+        //     reg = /(b)(c)/;
+
+        // console.log(str.match(reg));  // ['bc', 'b', 'c']
+        // 不捕获分组  ?:
+        // var str = '1969138070@qq.com',
+        //     reg = /^(?:[A-z0-9_-])+\@(?:[A-z0-9_\-\.])+\.(?:[A-z]{2,4})/
+
+        // console.log(str.match(reg));
+
+
+        // 座机号 +86. 086-028-438293847-133
+        // var str = '028-43829384-133',
+        //     reg = /^(([0\+]\d{2,3}-)?(0\d{2,3})-)(\d{7,8})(-(\d{3,}))?$/;
+
+        // console.log(str.match(reg));
+
+
+
+        // 手机号码  130 1 2 3 4 5 6 7 8 9  一般手机号不用这样严格校验，1开头就可以
+        // 14 145 7
+        // 15 150 1 2 3 5 6 7 8 9
+        // 17 170 678
+        // 18 180 1 2 3 4 5 6 7 8 9 
+        // (+86)
+        // var str = '13153452436',
+        //     reg = /^(\(\+86\))?(13[0-9]|14[57]|15[012356789]|17[0678]|18[0-9])\d{8}$/
+
+        // console.log(str.match(reg));
+
+
+        // 日期校验
+        // var str = '1990-12-01',
+        //     reg = /^(19|20)\d\d([-/.])(0[1-9]|1[0-2])\2(0[1-9]|[12][0-9]|3[01])/
+
+        // console.log(str.match(reg));  
+
+
+        // 16进制颜色正则 #A-F a-f 0-9
+        // var str = '#abcdef',
+        //     reg = /^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3}$)/
+        // console.log(str.match(reg));
+
+
+
+        // qq号
+        // var str = '',
+        //     reg = /^[1-9][0-9]{4,9}/
+        // console.log(str.match(reg));
+
+
+        // 微信6-20
+        // var str = 'abcdef_-',
+        //     reg = /^[A-z]([A-z0-9_-]{5,19})+$/
+        // console.log(str.match(reg));
+
+
+
+        // 车牌号 京Axxxxx
+        // var reg = /^[京津沪渝冀豫云辽黑湘皖鲁新苏浙赣鄂桂甘晋蒙陕吉闽贵粤青藏川宁琼使领][A-HJ-NP-Z][A-HJ-NP-Z0-9]{4,5}[A-HJ-NP-Z0-9挂学警港澳]$/
+        //     str = '京ASP430'
+        // console.log(str.match(reg));  
+    </script>
+</body>
+
+
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>正则模板替换问题</title>
+</head>
+<body>
+     <div class="box">
+        <h1>{{title}}</h1>
+        <p>{{content}}</p>
+     </div>
+
+    <script type="text/javascript">
+        // 模板替换
+        // {{title}}  html模板 -> 我是标题
+        // replace
+        // /{{(.*?)}}/g    // ?把贪婪模式改成非贪婪模式
+        var oBox = document.getElementsByClassName('box')[0]
+        var tpl = oBox.innerHTML,
+            reg = /{{(.*?)}}/g;
+        var res = tpl.replace(reg, function(node, key){
+            //  console.log(node, key);
+            return {
+                title: '我是一个测试标题',
+                content: '我是一个测试内容'
+            }[key];
+        });
+        // console.log(res);
+        oBox.innerHTML = res;
+    </script>
+</body>
+</html>
